@@ -4,9 +4,11 @@
 """OAuth 2.0 Authorization"""
 
 
-try: import simplejson as json
-except ImportError: import json
-from django.http import absolute_http_url_re, HttpResponseRedirect
+try:
+    import simplejson as json
+except ImportError:
+    import json
+from django.http import HttpResponseRedirect
 from urllib import urlencode
 from .consts import ACCESS_TOKEN_EXPIRATION, REFRESHABLE
 from .consts import CODE, TOKEN, CODE_AND_TOKEN
@@ -14,6 +16,11 @@ from .consts import AUTHENTICATION_METHOD, MAC, BEARER, MAC_KEY_LENGTH
 from .exceptions import OAuth2Exception
 from .lib.uri import add_parameters, add_fragments, normalize
 from .models import Client, AccessRange, Code, AccessToken, KeyGenerator
+
+import re
+
+
+absolute_http_url_re = re.compile(r"^https?://", re.I)
 
 
 class AuthorizationException(OAuth2Exception):
