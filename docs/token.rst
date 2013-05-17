@@ -14,7 +14,7 @@ grant types, specified through the grant_type request parameter.
 
 Connect the handler method to the access endpoint. ::
 
-    from django.conf.urls.defaults import patterns
+    from django.conf.urls import patterns
 
     urlpatterns = patterns('',
         (r'^oauth2/token/?$',  'oauth2app.token.handler'),
@@ -22,7 +22,7 @@ Connect the handler method to the access endpoint. ::
 
 To set token handler parameters, you can also use the TokenGenerator callable. ::
 
-    from django.conf.urls.defaults import patterns
+    from django.conf.urls import patterns
     from oauth2app.token import TokenGenerator
     from oauth2app.consts import MAC
 
